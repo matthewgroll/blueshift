@@ -19,7 +19,6 @@ def readcsv(name):
                 id_l_b[2].append(float(row['b']))
                 id_l_b[3].append(1/(float(row['parallax'])))
 
-
     return id_l_b
 
 
@@ -36,8 +35,10 @@ fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 
 
-xs, ys, zs = [star_dicts[1]], [star_dicts[2]], [star_dicts[3]]
-ax.scatter(xs, ys, zs, c='r', marker='o', s = 1)
+xs, ys, zs = [star_dicts[1][i] for i in range(500)], [star_dicts[2][j] for j in range(500)], \
+             [star_dicts[3][k] for k in range(500)]
+ax.scatter(xs, ys, zs, c='r', marker='o', s=1)
+ax.set_zlim3d(-30, 30)
 
 ax.set_xlabel('X Label')
 ax.set_ylabel('Y Label')
